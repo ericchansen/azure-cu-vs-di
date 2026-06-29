@@ -1,0 +1,835 @@
+{
+  "id": "8c26cc15-d3e1-42eb-a6a8-f59da9a8b345",
+  "status": "Succeeded",
+  "result": {
+    "analyzerId": "prebuilt-documentFields",
+    "apiVersion": "2025-11-01",
+    "createdAt": "2026-06-29T16:17:22Z",
+    "stringEncoding": "codePoint",
+    "warnings": [],
+    "contents": [
+      {
+        "path": "input1",
+        "markdown": "CONTOSO LTD.\n\n\n# INVOICE\n\nContoso Headquarters\n123 456th St\nNew York, NY, 10001\n\nINVOICE: INV-100\n\nDATE: 11/15/2019\nDUE DATE: 12/15/2019\n\nCUSTOMER NAME: MICROSOFT CORPORATION\n\nCUSTOMER ID: CID-12345\n\nMicrosoft Corp\n123 Other St,\nRedmond WA, 98052\n\nBILL TO:\nMicrosoft Finance\n123 Bill St,\nRedmond WA, 98052\n\nSHIP TO:\nMicrosoft Delivery\n123 Ship St,\nRedmond WA, 98052\n\nSERVICE ADDRESS:\nMicrosoft Services\n123 Service St,\nRedmond WA, 98052\n\n\n<table>\n<tr>\n<th>SALESPERSON</th>\n<th>P.O. NUMBER</th>\n<th>REQUISITIONER</th>\n<th>SHIPPED VIA</th>\n<th>F.O.B. POINT</th>\n<th>TERMS</th>\n</tr>\n<tr>\n<td></td>\n<td>PO-3333</td>\n<td></td>\n<td></td>\n<td></td>\n<td></td>\n</tr>\n</table>\n\n\n<table>\n<tr>\n<th>QUANTITY</th>\n<th>DESCRIPTION</th>\n<th>UNIT PRICE</th>\n<th>TOTAL</th>\n</tr>\n<tr>\n<td>1</td>\n<td>Test for 23 fields</td>\n<td>1</td>\n<td>$100.00</td>\n</tr>\n<tr>\n<td></td>\n<td></td>\n<td></td>\n<td></td>\n</tr>\n</table>\n\n\n<table>\n<tr>\n<td>SUBTOTAL</td>\n<td>$100.00</td>\n</tr>\n<tr>\n<td>SALES TAX</td>\n<td>$10.00</td>\n</tr>\n<tr>\n<td>TOTAL</td>\n<td>$110.00</td>\n</tr>\n<tr>\n<td>PREVIOUS BALANCE</td>\n<td>$500.00</td>\n</tr>\n<tr>\n<td>TOTAL DUE</td>\n<td>$610.00</td>\n</tr>\n</table>\n\n\nTHANK YOU FOR YOUR BUSINESS!\n\nREMIT TO:\nContoso Billing\n123 Remit St\nNew York, NY, 10001\n",
+        "fields": {
+          "InvoiceNumber": {
+            "type": "string",
+            "valueString": "INV-100",
+            "spans": [
+              "@{offset=90; length=7}"
+            ],
+            "confidence": 0.979,
+            "source": "D(1,7.4762,1.3943,8.0061,1.3943,8.0061,1.5381,7.4762,1.5381)"
+          },
+          "InvoiceDate": {
+            "type": "string",
+            "valueString": "11/15/2019",
+            "spans": [
+              "@{offset=105; length=10}"
+            ],
+            "confidence": 0.979,
+            "source": "D(1,7.2303,1.5958,8.0061,1.5948,8.0061,1.7524,7.2303,1.7517)"
+          },
+          "DueDate": {
+            "type": "string",
+            "valueString": "12/15/2019",
+            "spans": [
+              "@{offset=126; length=10}"
+            ],
+            "confidence": 0.979,
+            "source": "D(1,7.2331,1.8011,8.0020,1.7993,8.0020,1.9557,7.2331,1.9558)"
+          },
+          "CustomerName": {
+            "type": "string",
+            "valueString": "MICROSOFT CORPORATION",
+            "spans": [
+              "@{offset=153; length=21}"
+            ],
+            "confidence": 0.97,
+            "source": "D(1,6.2299,2.0019,8.0061,2.0012,8.0062,2.1569,6.2300,2.1576)"
+          },
+          "CustomerId": {
+            "type": "string",
+            "valueString": "CID-12345",
+            "spans": [
+              "@{offset=189; length=9}"
+            ],
+            "confidence": 0.979,
+            "source": "D(1,7.3218,2.2088,8.0066,2.2111,8.0061,2.3592,7.3213,2.3569)"
+          },
+          "CustomerAddress": {
+            "type": "object",
+            "valueObject": {
+              "Line1": "@{type=string; valueString=123 Other St; spans=System.Object[]; confidence=0.829; source=D(1,0.5795,2.8273,1.4808,2.8396,1.4786,3.0027,0.5773,2.9904)}",
+              "City": "@{type=string; valueString=Redmond; spans=System.Object[]; confidence=0.976; source=D(1,0.5733,3.0335,1.2210,3.0328,1.2210,3.1972,0.5733,3.1931)}",
+              "State": "@{type=string; valueString=WA; spans=System.Object[]; confidence=0.995; source=D(1,1.2623,3.0325,1.5131,3.0309,1.5131,3.1967,1.2623,3.1971)}",
+              "PostalCode": "@{type=string; valueString=98052; spans=System.Object[]; confidence=0.985; source=D(1,1.5848,3.0302,2.0285,3.0242,2.0285,3.1904,1.5848,3.1961)}"
+            }
+          },
+          "BillTo": {
+            "type": "object",
+            "valueObject": {
+              "Name": "@{type=string; valueString=Microsoft Finance; spans=System.Object[]; confidence=0.973; source=D(1,0.5738,4.1537,1.8056,4.1550,1.8054,4.3105,0.5736,4.3092)}",
+              "Line1": "@{type=string; valueString=123 Bill St; spans=System.Object[]; confidence=0.819; source=D(1,0.5785,4.3554,1.2870,4.3571,1.2866,4.5146,0.5781,4.5129)}",
+              "City": "@{type=string; valueString=Redmond; spans=System.Object[]; confidence=0.975; source=D(1,0.5764,4.5596,1.2228,4.5570,1.2228,4.7189,0.5764,4.7192)}",
+              "State": "@{type=string; valueString=WA; spans=System.Object[]; confidence=0.995; source=D(1,1.2602,4.5569,1.5113,4.5562,1.5113,4.7188,1.2602,4.7189)}",
+              "PostalCode": "@{type=string; valueString=98052; spans=System.Object[]; confidence=0.986; source=D(1,1.5834,4.5561,2.0295,4.5555,2.0295,4.7185,1.5834,4.7187)}"
+            }
+          },
+          "ShipTo": {
+            "type": "object",
+            "valueObject": {
+              "Name": "@{type=string; valueString=Microsoft Delivery; spans=System.Object[]; confidence=0.974; source=D(1,3.3203,4.1480,4.5873,4.1560,4.5862,4.3246,3.3193,4.3166)}",
+              "Line1": "@{type=string; valueString=123 Ship St; spans=System.Object[]; confidence=0.806; source=D(1,3.3286,4.3522,4.1197,4.3540,4.1193,4.5243,3.3282,4.5225)}",
+              "City": "@{type=string; valueString=Redmond; spans=System.Object[]; confidence=0.972; source=D(1,3.3245,4.5559,3.9710,4.5547,3.9710,4.7208,3.3245,4.7207)}",
+              "State": "@{type=string; valueString=WA; spans=System.Object[]; confidence=0.995; source=D(1,4.0123,4.5546,4.2626,4.5545,4.2626,4.7207,4.0123,4.7208)}",
+              "PostalCode": "@{type=string; valueString=98052; spans=System.Object[]; confidence=0.984; source=D(1,4.3369,4.5545,4.7771,4.5550,4.7771,4.7201,4.3369,4.7206)}"
+            }
+          },
+          "ServiceAddress": {
+            "type": "object",
+            "valueObject": {
+              "Name": "@{type=string; valueString=Microsoft Services; spans=System.Object[]; confidence=0.973; source=D(1,6.1965,4.1491,7.4547,4.1537,7.4541,4.3134,6.1959,4.3088)}",
+              "Line1": "@{type=string; valueString=123 Service St; spans=System.Object[]; confidence=0.858; source=D(1,6.2007,4.3545,7.1891,4.3584,7.1885,4.5182,6.2001,4.5143)}",
+              "City": "@{type=string; valueString=Redmond; spans=System.Object[]; confidence=0.972; source=D(1,6.1965,4.5559,6.8458,4.5547,6.8458,4.7206,6.1965,4.7214)}",
+              "State": "@{type=string; valueString=WA; spans=System.Object[]; confidence=0.99; source=D(1,6.8871,4.5546,7.1374,4.5545,7.1374,4.7206,6.8871,4.7206)}",
+              "PostalCode": "@{type=string; valueString=98052; spans=System.Object[]; confidence=0.984; source=D(1,7.2117,4.5545,7.6492,4.5550,7.6492,4.7214,7.2117,4.7207)}"
+            }
+          },
+          "PurchaseOrderNumber": {
+            "type": "string",
+            "valueString": "PO-3333",
+            "spans": [
+              "@{offset=600; length=7}"
+            ],
+            "confidence": 0.975,
+            "source": "D(1,1.8884,5.3174,2.4819,5.3174,2.4819,5.4651,1.8884,5.4651)"
+          },
+          "LineItems": {
+            "type": "array",
+            "valueArray": [
+              "@{type=object; valueObject=}"
+            ]
+          },
+          "Subtotal": {
+            "type": "string",
+            "valueString": "$100.00",
+            "spans": [
+              "@{offset=938; length=7}"
+            ],
+            "confidence": 0.979,
+            "source": "D(1,7.3627,6.6170,7.9272,6.6166,7.9273,6.7786,7.3628,6.7790)"
+          },
+          "SalesTax": {
+            "type": "string",
+            "valueString": "$10.00",
+            "spans": [
+              "@{offset=985; length=6}"
+            ],
+            "confidence": 0.986,
+            "source": "D(1,7.4458,6.9066,7.9283,6.9100,7.9272,7.0718,7.4447,7.0684)"
+          },
+          "Total": {
+            "type": "string",
+            "valueString": "$110.00",
+            "spans": [
+              "@{offset=1027; length=7}"
+            ],
+            "confidence": 0.979,
+            "source": "D(1,7.3586,7.2076,7.9275,7.2085,7.9272,7.3700,7.3583,7.3691)"
+          },
+          "PreviousBalance": {
+            "type": "string",
+            "valueString": "$500.00",
+            "spans": [
+              "@{offset=1081; length=7}"
+            ],
+            "confidence": 0.98,
+            "source": "D(1,7.3586,7.5081,7.9277,7.5097,7.9272,7.6717,7.3581,7.6701)"
+          },
+          "TotalDue": {
+            "type": "string",
+            "valueString": "$610.00",
+            "spans": [
+              "@{offset=1128; length=7}"
+            ],
+            "confidence": 0.98,
+            "source": "D(1,7.3586,7.8038,7.9323,7.8071,7.9314,7.9686,7.3577,7.9653)"
+          },
+          "RemitTo": {
+            "type": "object",
+            "valueObject": {
+              "Name": "@{type=string; valueString=Contoso Billing; spans=System.Object[]; confidence=0.977; source=D(1,0.5702,9.3095,1.6010,9.3067,1.6015,9.4807,0.5707,9.4834)}",
+              "Line1": "@{type=string; valueString=123 Remit St; spans=System.Object[]; confidence=0.981; source=D(1,0.5760,9.5171,1.4495,9.5089,1.4509,9.6629,0.5774,9.6712)}",
+              "City": "@{type=string; valueString=New York; spans=System.Object[]; confidence=0.98; source=D(1,0.5728,9.7062,1.2315,9.7097,1.2306,9.8757,0.5720,9.8722)}",
+              "State": "@{type=string; valueString=NY; spans=System.Object[]; confidence=0.997; source=D(1,1.3088,9.7095,1.4928,9.7090,1.4930,9.8762,1.3090,9.8759)}",
+              "PostalCode": "@{type=string; valueString=10001; spans=System.Object[]; confidence=0.987; source=D(1,1.5767,9.7088,2.0015,9.7075,2.0015,9.8718,1.5768,9.8757)}"
+            }
+          }
+        },
+        "kind": "document",
+        "startPageNumber": 1,
+        "endPageNumber": 1,
+        "unit": "inch",
+        "pages": [
+          {
+            "pageNumber": 1,
+            "angle": 0,
+            "width": 8.5,
+            "height": 11,
+            "spans": [
+              "@{offset=0; length=1247}"
+            ],
+            "words": [
+              "@{content=CONTOSO; span=; confidence=0.996; source=D(1,0.5774,0.6553,1.7386,0.6544,1.7386,0.8885,0.5774,0.8871)}",
+              "@{content=LTD; span=; confidence=0.997; source=D(1,1.8212,0.6545,2.2464,0.6552,2.2464,0.8857,1.8213,0.8881)}",
+              "@{content=.; span=; confidence=0.998; source=D(1,2.2542,0.6552,2.3408,0.6554,2.3408,0.8852,2.2542,0.8857)}",
+              "@{content=INVOICE; span=; confidence=0.984; source=D(1,7.0432,0.5629,8.0061,0.5602,8.0061,0.7863,7.0432,0.7869)}",
+              "@{content=Contoso; span=; confidence=0.998; source=D(1,0.5712,1.4066,1.1305,1.4043,1.1305,1.5658,0.5712,1.5651)}",
+              "@{content=Headquarters; span=; confidence=0.998; source=D(1,1.176,1.4043,2.1125,1.4065,2.1125,1.5672,1.176,1.5659)}",
+              "@{content=123; span=; confidence=0.956; source=D(1,0.5774,1.6027,0.8212,1.602,0.8212,1.7666,0.5774,1.764)}",
+              "@{content=456th; span=; confidence=0.858; source=D(1,0.8537,1.6019,1.222,1.601,1.222,1.7655,0.8537,1.7669)}",
+              "@{content=St; span=; confidence=0.966; source=D(1,1.2491,1.6009,1.4008,1.6006,1.4008,1.7632,1.2491,1.7651)}",
+              "@{content=New; span=; confidence=0.995; source=D(1,0.5733,1.8096,0.872,1.8088,0.872,1.9749,0.5733,1.9742)}",
+              "@{content=York; span=; confidence=0.993; source=D(1,0.9027,1.8087,1.2181,1.8082,1.2181,1.9753,0.9027,1.9749)}",
+              "@{content=,; span=; confidence=0.999; source=D(1,1.2153,1.8082,1.2516,1.8082,1.2516,1.9753,1.2153,1.9753)}",
+              "@{content=NY; span=; confidence=0.997; source=D(1,1.2991,1.8082,1.4861,1.808,1.4861,1.9754,1.2991,1.9753)}",
+              "@{content=,; span=; confidence=0.998; source=D(1,1.4861,1.808,1.5196,1.808,1.5196,1.9754,1.4861,1.9754)}",
+              "@{content=10001; span=; confidence=0.994; source=D(1,1.5671,1.808,2.0026,1.8085,2.0026,1.9747,1.5671,1.9753)}",
+              "@{content=INVOICE; span=; confidence=0.992; source=D(1,6.8274,1.3951,7.3835,1.3947,7.3835,1.5379,6.8274,1.5384)}",
+              "@{content=:; span=; confidence=0.999; source=D(1,7.3954,1.3947,7.4263,1.3947,7.4263,1.5379,7.3954,1.5379)}",
+              "@{content=INV; span=; confidence=0.991; source=D(1,7.4762,1.3947,7.7019,1.3945,7.7019,1.5379,7.4762,1.5379)}",
+              "@{content=-; span=; confidence=0.998; source=D(1,7.7043,1.3945,7.7494,1.3945,7.7494,1.5379,7.7043,1.5379)}",
+              "@{content=100; span=; confidence=0.995; source=D(1,7.7566,1.3945,8.0061,1.3943,8.0061,1.5381,7.7566,1.5379)}",
+              "@{content=DATE; span=; confidence=0.997; source=D(1,6.79,1.5961,7.1386,1.5959,7.1386,1.7515,6.79,1.7507)}",
+              "@{content=:; span=; confidence=0.999; source=D(1,7.1517,1.5959,7.1832,1.5959,7.1832,1.7516,7.1517,1.7515)}",
+              "@{content=11/15/2019; span=; confidence=0.995; source=D(1,7.2303,1.5958,8.0061,1.5948,8.0061,1.7524,7.2303,1.7517)}",
+              "@{content=DUE; span=; confidence=0.997; source=D(1,6.4746,1.8006,6.7507,1.801,6.7507,1.9548,6.4746,1.9538)}",
+              "@{content=DATE; span=; confidence=0.997; source=D(1,6.7997,1.8011,7.1428,1.8012,7.1428,1.9557,6.7997,1.9549)}",
+              "@{content=:; span=; confidence=0.999; source=D(1,7.1557,1.8012,7.1867,1.8011,7.1867,1.9558,7.1557,1.9558)}",
+              "@{content=12/15/2019; span=; confidence=0.994; source=D(1,7.2331,1.8011,8.002,1.7993,8.002,1.9557,7.2331,1.9558)}",
+              "@{content=CUSTOMER; span=; confidence=0.997; source=D(1,4.9307,2.004,5.6841,2.0027,5.6841,2.1573,4.9307,2.1567)}",
+              "@{content=NAME; span=; confidence=0.998; source=D(1,5.7252,2.0026,6.1352,2.0021,6.1352,2.1575,5.7252,2.1573)}",
+              "@{content=:; span=; confidence=0.999; source=D(1,6.1429,2.0021,6.1762,2.0021,6.1762,2.1575,6.1429,2.1575)}",
+              "@{content=MICROSOFT; span=; confidence=0.996; source=D(1,6.23,2.0021,6.9938,2.0016,6.9938,2.1573,6.23,2.1575)}",
+              "@{content=CORPORATION; span=; confidence=0.997; source=D(1,7.0348,2.0016,8.0061,2.0021,8.0061,2.1561,7.0348,2.1573)}",
+              "@{content=CUSTOMER; span=; confidence=0.995; source=D(1,6.3003,2.2092,7.059,2.2087,7.059,2.3566,6.3003,2.357)}",
+              "@{content=ID; span=; confidence=0.993; source=D(1,7.1011,2.2087,7.2301,2.2089,7.2301,2.3568,7.1011,2.3567)}",
+              "@{content=:; span=; confidence=0.999; source=D(1,7.2449,2.2089,7.2772,2.2089,7.2772,2.3569,7.2449,2.3568)}",
+              "@{content=CID; span=; confidence=0.984; source=D(1,7.3218,2.209,7.5375,2.2095,7.5375,2.3574,7.3218,2.3569)}",
+              "@{content=-; span=; confidence=0.998; source=D(1,7.5425,2.2095,7.5871,2.2097,7.5871,2.3575,7.5425,2.3574)}",
+              "@{content=12345; span=; confidence=0.996; source=D(1,7.592,2.2097,8.0061,2.2113,8.0061,2.3588,7.592,2.3575)}",
+              "@{content=Microsoft; span=; confidence=0.996; source=D(1,0.5753,2.6298,1.231,2.63,1.2289,2.7987,0.5733,2.7987)}",
+              "@{content=Corp; span=; confidence=0.998; source=D(1,1.2645,2.6299,1.6021,2.6288,1.6,2.8012,1.2624,2.7988)}",
+              "@{content=123; span=; confidence=0.994; source=D(1,0.5795,2.8291,0.8176,2.8317,0.8177,2.9927,0.5795,2.9904)}",
+              "@{content=Other; span=; confidence=0.988; source=D(1,0.8631,2.8321,1.2618,2.8369,1.2618,2.9984,0.8631,2.9932)}",
+              "@{content=St; span=; confidence=0.997; source=D(1,1.2939,2.8373,1.4331,2.839,1.4331,3.0009,1.294,2.9988)}",
+              "@{content=,; span=; confidence=0.998; source=D(1,1.4331,2.839,1.4786,2.8396,1.4786,3.0016,1.4331,3.0009)}",
+              "@{content=Redmond; span=; confidence=0.996; source=D(1,0.5733,3.0335,1.221,3.0328,1.221,3.1972,0.5733,3.1931)}",
+              "@{content=WA; span=; confidence=0.998; source=D(1,1.2623,3.0325,1.5131,3.0309,1.5131,3.1967,1.2623,3.1971)}",
+              "@{content=,; span=; confidence=0.999; source=D(1,1.5104,3.031,1.5462,3.0307,1.5462,3.1966,1.5104,3.1967)}",
+              "@{content=98052; span=; confidence=0.996; source=D(1,1.5848,3.0302,2.0285,3.0242,2.0285,3.1904,1.5848,3.1961)}",
+              "@{content=BILL; span=; confidence=0.995; source=D(1,0.5717,3.9478,0.8434,3.9478,0.8436,4.0874,0.5722,4.0874)}",
+              "@{content=TO; span=; confidence=0.997; source=D(1,0.873,3.9478,1.0557,3.9478,1.0557,4.0874,0.8733,4.0874)}",
+              "@{content=:; span=; confidence=0.999; source=D(1,1.0693,3.9478,1.1196,3.9478,1.1196,4.0874,1.0694,4.0874)}",
+              "@{content=Microsoft; span=; confidence=0.998; source=D(1,0.5738,4.1583,1.2332,4.1581,1.2335,4.3099,0.5743,4.3083)}",
+              "@{content=Finance; span=; confidence=0.998; source=D(1,1.2743,4.158,1.8054,4.155,1.8054,4.3083,1.2745,4.3099)}",
+              "@{content=123; span=; confidence=0.998; source=D(1,0.5785,4.3554,0.8206,4.3574,0.8206,4.5135,0.5785,4.5116)}",
+              "@{content=Bill; span=; confidence=0.995; source=D(1,0.8779,4.3576,1.0679,4.3581,1.0679,4.514,0.8779,4.5136)}",
+              "@{content=St; span=; confidence=0.997; source=D(1,1.1044,4.358,1.2424,4.3577,1.2424,4.5133,1.1044,4.5138)}",
+              "@{content=,; span=; confidence=0.998; source=D(1,1.245,4.3577,1.2866,4.3576,1.2866,4.5132,1.245,4.5133)}",
+              "@{content=Redmond; span=; confidence=0.996; source=D(1,0.5764,4.5596,1.2228,4.557,1.2228,4.7189,0.5764,4.7192)}",
+              "@{content=WA; span=; confidence=0.998; source=D(1,1.2602,4.5569,1.5113,4.5562,1.5113,4.7188,1.2602,4.7189)}",
+              "@{content=,; span=; confidence=0.999; source=D(1,1.506,4.5562,1.5434,4.5561,1.5434,4.7188,1.506,4.7188)}",
+              "@{content=98052; span=; confidence=0.995; source=D(1,1.5834,4.5561,2.0295,4.5555,2.0295,4.7185,1.5834,4.7187)}",
+              "@{content=SHIP; span=; confidence=0.998; source=D(1,3.3141,3.9446,3.6224,3.9451,3.6224,4.0874,3.3141,4.087)}",
+              "@{content=TO; span=; confidence=0.998; source=D(1,3.6591,3.945,3.8402,3.9435,3.8402,4.0858,3.6591,4.0873)}",
+              "@{content=:; span=; confidence=0.999; source=D(1,3.8524,3.9434,3.9014,3.9429,3.9014,4.0852,3.8524,4.0857)}",
+              "@{content=Microsoft; span=; confidence=0.998; source=D(1,3.3203,4.151,3.9787,4.1525,3.9787,4.3197,3.3203,4.3166)}",
+              "@{content=Delivery; span=; confidence=0.998; source=D(1,4.0182,4.1527,4.5862,4.156,4.5862,4.3239,4.0182,4.32)}",
+              "@{content=123; span=; confidence=0.997; source=D(1,3.3286,4.3536,3.5675,4.3531,3.5675,4.5225,3.3286,4.5225)}",
+              "@{content=Ship; span=; confidence=0.996; source=D(1,3.6114,4.3531,3.8996,4.3535,3.8996,4.5225,3.6114,4.5225)}",
+              "@{content=St; span=; confidence=0.998; source=D(1,3.9408,4.3537,4.0753,4.3543,4.0753,4.5225,3.9408,4.5225)}",
+              "@{content=,; span=; confidence=0.997; source=D(1,4.0808,4.3543,4.1193,4.3545,4.1193,4.5225,4.0808,4.5225)}",
+              "@{content=Redmond; span=; confidence=0.996; source=D(1,3.3245,4.5559,3.971,4.5547,3.971,4.7208,3.3245,4.7207)}",
+              "@{content=WA; span=; confidence=0.998; source=D(1,4.0123,4.5546,4.2626,4.5545,4.2626,4.7207,4.0123,4.7208)}",
+              "@{content=,; span=; confidence=0.999; source=D(1,4.2599,4.5545,4.2984,4.5545,4.2984,4.7206,4.2599,4.7207)}",
+              "@{content=98052; span=; confidence=0.996; source=D(1,4.3369,4.5545,4.7771,4.555,4.7771,4.7201,4.3369,4.7206)}",
+              "@{content=SERVICE; span=; confidence=0.997; source=D(1,6.1924,3.9447,6.7329,3.9451,6.7329,4.0899,6.1924,4.0895)}",
+              "@{content=ADDRESS; span=; confidence=0.998; source=D(1,6.7644,3.9451,7.38,3.9426,7.38,4.0877,6.7644,4.0898)}",
+              "@{content=:; span=; confidence=0.998; source=D(1,7.3897,3.9425,7.4333,3.9423,7.4333,4.0875,7.3897,4.0877)}",
+              "@{content=Microsoft; span=; confidence=0.995; source=D(1,6.1965,4.1547,6.8541,4.1562,6.8541,4.3112,6.1965,4.3079)}",
+              "@{content=Services; span=; confidence=0.996; source=D(1,6.8856,4.1562,7.4541,4.1537,7.4541,4.3098,6.8856,4.3113)}",
+              "@{content=123; span=; confidence=0.99; source=D(1,6.2007,4.3545,6.4449,4.3557,6.4449,4.5151,6.2007,4.5135)}",
+              "@{content=Service; span=; confidence=0.984; source=D(1,6.4879,4.3559,6.9684,4.3581,6.9684,4.517,6.4879,4.5154)}",
+              "@{content=St; span=; confidence=0.996; source=D(1,7.0086,4.3583,7.1482,4.3589,7.1482,4.5172,7.0086,4.5171)}",
+              "@{content=,; span=; confidence=0.997; source=D(1,7.1482,4.3589,7.1885,4.3591,7.1885,4.5173,7.1482,4.5172)}",
+              "@{content=Redmond; span=; confidence=0.996; source=D(1,6.1965,4.5559,6.8458,4.5547,6.8458,4.7206,6.1965,4.7214)}",
+              "@{content=WA; span=; confidence=0.998; source=D(1,6.8871,4.5546,7.1374,4.5545,7.1374,4.7206,6.8871,4.7206)}",
+              "@{content=,; span=; confidence=0.999; source=D(1,7.1347,4.5545,7.1732,4.5545,7.1732,4.7206,7.1347,4.7206)}",
+              "@{content=98052; span=; confidence=0.995; source=D(1,7.2117,4.5545,7.6492,4.555,7.6492,4.7214,7.2117,4.7207)}",
+              "@{content=SALESPERSON; span=; confidence=0.997; source=D(1,0.6812,5.033,1.6238,5.0301,1.6238,5.1751,0.6817,5.1731)}",
+              "@{content=P; span=; confidence=0.927; source=D(1,2.0928,5.0301,2.1827,5.0305,2.1827,5.1757,2.0928,5.1755)}",
+              "@{content=.; span=; confidence=0.953; source=D(1,2.1851,5.0305,2.2167,5.0307,2.2167,5.1757,2.1851,5.1757)}",
+              "@{content=O; span=; confidence=0.938; source=D(1,2.2216,5.0307,2.326,5.0313,2.326,5.1759,2.2216,5.1757)}",
+              "@{content=.; span=; confidence=0.953; source=D(1,2.3358,5.0313,2.3649,5.0314,2.3649,5.176,2.3358,5.1759)}",
+              "@{content=NUMBER; span=; confidence=0.934; source=D(1,2.4183,5.0316,3.0256,5.0291,3.0256,5.1745,2.4183,5.176)}",
+              "@{content=REQUISITIONER; span=; confidence=0.995; source=D(1,3.4697,5.0292,4.5198,5.0295,4.5198,5.1819,3.4697,5.1833)}",
+              "@{content=SHIPPED; span=; confidence=0.998; source=D(1,4.7854,5.0298,5.3489,5.0316,5.3489,5.1756,4.7854,5.1751)}",
+              "@{content=VIA; span=; confidence=0.997; source=D(1,5.3926,5.0315,5.6404,5.0309,5.6404,5.1748,5.3926,5.1755)}",
+              "@{content=F; span=; confidence=0.939; source=D(1,5.8438,5.0329,5.9212,5.033,5.9212,5.173,5.8438,5.1727)}",
+              "@{content=.; span=; confidence=0.95; source=D(1,5.9235,5.033,5.954,5.033,5.954,5.1731,5.9235,5.173)}",
+              "@{content=O; span=; confidence=0.924; source=D(1,5.9634,5.033,6.0666,5.0331,6.0666,5.1736,5.9634,5.1732)}",
+              "@{content=.; span=; confidence=0.945; source=D(1,6.0713,5.0331,6.1018,5.0332,6.1018,5.1738,6.0713,5.1736)}",
+              "@{content=B; span=; confidence=0.942; source=D(1,6.1159,5.0332,6.1956,5.0331,6.1956,5.1738,6.1159,5.1738)}",
+              "@{content=.; span=; confidence=0.924; source=D(1,6.2027,5.0331,6.2308,5.0331,6.2308,5.1738,6.2027,5.1738)}",
+              "@{content=POINT; span=; confidence=0.906; source=D(1,6.2848,5.033,6.707,5.0321,6.707,5.1717,6.2848,5.1737)}",
+              "@{content=TERMS; span=; confidence=0.998; source=D(1,7.1594,5.0338,7.6367,5.0328,7.6367,5.1722,7.1594,5.1722)}",
+              "@{content=PO; span=; confidence=0.918; source=D(1,1.8884,5.3174,2.0764,5.3174,2.0764,5.4651,1.8884,5.4651)}",
+              "@{content=-; span=; confidence=0.998; source=D(1,2.0813,5.3174,2.1283,5.3174,2.1283,5.4651,2.0813,5.4651)}",
+              "@{content=3333; span=; confidence=0.997; source=D(1,2.1332,5.3174,2.4819,5.3174,2.4819,5.4651,2.1332,5.4651)}",
+              "@{content=QUANTITY; span=; confidence=0.996; source=D(1,0.8005,5.8105,1.5097,5.807,1.5087,5.9574,0.8005,5.9609)}",
+              "@{content=DESCRIPTION; span=; confidence=0.994; source=D(1,3.3286,5.8004,4.2272,5.7956,4.2272,5.946,3.3286,5.9508)}",
+              "@{content=UNIT; span=; confidence=0.996; source=D(1,5.9019,5.8063,6.2323,5.8019,6.2323,5.9415,5.9019,5.9459)}",
+              "@{content=PRICE; span=; confidence=0.997; source=D(1,6.2701,5.8016,6.6572,5.801,6.6572,5.9406,6.2701,5.9413)}",
+              "@{content=TOTAL; span=; confidence=0.996; source=D(1,7.176,5.8059,7.6243,5.8073,7.6243,5.9469,7.176,5.9456)}",
+              "@{content=1; span=; confidence=0.999; source=D(1,0.5857,6.0913,0.6672,6.0863,0.6672,6.2152,0.5857,6.2202)}",
+              "@{content=Test; span=; confidence=0.996; source=D(1,1.8801,6.0753,2.1755,6.0724,2.1755,6.2336,1.8801,6.2365)}",
+              "@{content=for; span=; confidence=0.996; source=D(1,2.2075,6.0721,2.4124,6.0708,2.4124,6.2319,2.2075,6.2332)}",
+              "@{content=23; span=; confidence=0.993; source=D(1,2.4416,6.0706,2.6066,6.0698,2.6066,6.2309,2.4416,6.2318)}",
+              "@{content=fields; span=; confidence=0.993; source=D(1,2.6492,6.0696,3.0298,6.0695,3.0298,6.2306,2.6492,6.2307)}",
+              "@{content=1; span=; confidence=0.999; source=D(1,6.6448,6.0926,6.7278,6.0925,6.7278,6.2214,6.6448,6.2215)}",
+              "@{content=$; span=; confidence=0.999; source=D(1,7.3586,6.074,7.4373,6.0727,7.4373,6.2339,7.3586,6.2351)}",
+              "@{content=100.00; span=; confidence=0.995; source=D(1,7.4482,6.0726,7.9231,6.0697,7.9231,6.2308,7.4482,6.2337)}",
+              "@{content=SUBTOTAL; span=; confidence=0.997; source=D(1,6.0098,6.6494,6.7402,6.6494,6.7402,6.7937,6.0098,6.7999)}",
+              "@{content=$; span=; confidence=0.998; source=D(1,7.3628,6.6179,7.4415,6.617,7.4415,6.7782,7.3628,6.779)}",
+              "@{content=100.00; span=; confidence=0.994; source=D(1,7.4496,6.6169,7.9272,6.6166,7.9272,6.7777,7.4496,6.7781)}",
+              "@{content=SALES; span=; confidence=0.997; source=D(1,6.0181,6.9454,6.4268,6.9448,6.4268,7.0952,6.0181,7.0952)}",
+              "@{content=TAX; span=; confidence=0.996; source=D(1,6.4619,6.9449,6.7402,6.9473,6.7402,7.0952,6.4619,7.0952)}",
+              "@{content=$; span=; confidence=0.999; source=D(1,7.4458,6.908,7.5224,6.9073,7.5224,7.0684,7.4458,7.0684)}",
+              "@{content=10.00; span=; confidence=0.996; source=D(1,7.5333,6.9072,7.9272,6.9128,7.9272,7.0684,7.5333,7.0684)}",
+              "@{content=TOTAL; span=; confidence=0.997; source=D(1,6.2795,7.246,6.7402,7.2452,6.7402,7.3849,6.2795,7.3856)}",
+              "@{content=$; span=; confidence=0.999; source=D(1,7.3586,7.208,7.4379,7.2077,7.4379,7.3688,7.3586,7.3691)}",
+              "@{content=110.00; span=; confidence=0.997; source=D(1,7.4461,7.2077,7.9272,7.2085,7.9272,7.3696,7.4461,7.3688)}",
+              "@{content=PREVIOUS; span=; confidence=0.997; source=D(1,5.3665,7.5356,6.0533,7.5356,6.0533,7.686,5.3665,7.686)}",
+              "@{content=BALANCE; span=; confidence=0.998; source=D(1,6.1013,7.5356,6.7402,7.5356,6.7402,7.686,6.1013,7.686)}",
+              "@{content=$; span=; confidence=0.999; source=D(1,7.3586,7.509,7.4407,7.5083,7.4407,7.6694,7.3586,7.6701)}",
+              "@{content=500.00; span=; confidence=0.998; source=D(1,7.4434,7.5083,7.9272,7.5097,7.9272,7.6708,7.4434,7.6694)}",
+              "@{content=TOTAL; span=; confidence=0.996; source=D(1,5.9517,7.8364,6.4026,7.8364,6.4026,7.9868,5.9517,7.9868)}",
+              "@{content=DUE; span=; confidence=0.997; source=D(1,6.4421,7.8364,6.7402,7.8364,6.7402,7.9868,6.4421,7.9868)}",
+              "@{content=$; span=; confidence=0.999; source=D(1,7.3586,7.805,7.4385,7.8044,7.4385,7.9653,7.3586,7.9653)}",
+              "@{content=610.00; span=; confidence=0.997; source=D(1,7.4468,7.8043,7.9314,7.8099,7.9314,7.9653,7.4468,7.9653)}",
+              "@{content=THANK; span=; confidence=0.997; source=D(1,3.1107,8.2722,3.5876,8.2706,3.5876,8.4274,3.1107,8.4265)}",
+              "@{content=YOU; span=; confidence=0.998; source=D(1,3.6112,8.2705,3.9021,8.2695,3.9021,8.4279,3.6112,8.4274)}",
+              "@{content=FOR; span=; confidence=0.997; source=D(1,3.9545,8.2694,4.2165,8.2686,4.2165,8.428,3.9545,8.4279)}",
+              "@{content=YOUR; span=; confidence=0.997; source=D(1,4.2427,8.2685,4.6332,8.2674,4.6332,8.428,4.2427,8.428)}",
+              "@{content=BUSINESS; span=; confidence=0.997; source=D(1,4.6725,8.2673,5.304,8.2657,5.304,8.4272,4.6725,8.428)}",
+              "@{content=!; span=; confidence=0.999; source=D(1,5.3145,8.2657,5.3748,8.2655,5.3748,8.4271,5.3145,8.4271)}",
+              "@{content=REMIT; span=; confidence=0.996; source=D(1,0.5707,9.0986,0.9998,9.0986,1,9.2383,0.5712,9.2383)}",
+              "@{content=TO; span=; confidence=0.997; source=D(1,1.0275,9.0986,1.2167,9.0986,1.2168,9.2383,1.0277,9.2383)}",
+              "@{content=:; span=; confidence=0.999; source=D(1,1.2259,9.0986,1.2721,9.0986,1.2721,9.2383,1.226,9.2383)}",
+              "@{content=Contoso; span=; confidence=0.998; source=D(1,0.5717,9.3126,1.1339,9.3113,1.1323,9.4795,0.5707,9.4812)}",
+              "@{content=Billing; span=; confidence=0.999; source=D(1,1.1787,9.311,1.601,9.3067,1.5989,9.4807,1.177,9.4795)}",
+              "@{content=123; span=; confidence=0.994; source=D(1,0.5774,9.5171,0.8202,9.5179,0.8202,9.6683,0.5774,9.6675)}",
+              "@{content=Remit; span=; confidence=0.997; source=D(1,0.8723,9.518,1.2637,9.5143,1.2637,9.6647,0.8723,9.6684)}",
+              "@{content=St; span=; confidence=0.997; source=D(1,1.2959,9.5137,1.4495,9.5112,1.4495,9.6616,1.2959,9.6641)}",
+              "@{content=New; span=; confidence=0.996; source=D(1,0.5728,9.7113,0.8758,9.7106,0.8762,9.8732,0.5733,9.8693)}",
+              "@{content=York; span=; confidence=0.993; source=D(1,0.9137,9.7105,1.2303,9.7097,1.2306,9.8757,0.9141,9.8737)}",
+              "@{content=,; span=; confidence=0.999; source=D(1,1.2276,9.7097,1.2628,9.7096,1.263,9.8758,1.2279,9.8757)}",
+              "@{content=NY; span=; confidence=0.997; source=D(1,1.3088,9.7095,1.4928,9.709,1.493,9.8762,1.309,9.8759)}",
+              "@{content=,; span=; confidence=0.998; source=D(1,1.4928,9.709,1.528,9.7089,1.5281,9.8762,1.493,9.8762)}",
+              "@{content=10001; span=; confidence=0.995; source=D(1,1.5767,9.7088,2.0015,9.7075,2.0015,9.8718,1.5768,9.8757)}"
+            ],
+            "lines": [
+              "@{content=CONTOSO LTD.; source=D(1,0.5774,0.6543,2.3408,0.6543,2.3408,0.8891,0.5774,0.8891); span=}",
+              "@{content=INVOICE; source=D(1,7.0426,0.5629,8.0061,0.5602,8.0067,0.7865,7.0432,0.7892); span=}",
+              "@{content=Contoso Headquarters; source=D(1,0.5712,1.4029,2.1128,1.405,2.1125,1.5672,0.571,1.5651); span=}",
+              "@{content=123 456th St; source=D(1,0.5771,1.6023,1.4008,1.6006,1.4011,1.7661,0.5774,1.7679); span=}",
+              "@{content=New York, NY, 10001; source=D(1,0.5733,1.808,2.0026,1.808,2.0026,1.9754,0.5733,1.9754); span=}",
+              "@{content=INVOICE: INV-100; source=D(1,6.8273,1.3946,8.0061,1.3943,8.0062,1.5381,6.8274,1.5384); span=}",
+              "@{content=DATE: 11/15/2019; source=D(1,6.79,1.5948,8.0061,1.5948,8.0061,1.7524,6.79,1.7524); span=}",
+              "@{content=DUE DATE: 12/15/2019; source=D(1,6.4746,1.8006,8.002,1.7993,8.002,1.9557,6.4746,1.9571); span=}",
+              "@{content=CUSTOMER NAME: MICROSOFT CORPORATION; source=D(1,4.9307,2.002,8.0061,2.0014,8.0061,2.1572,4.9307,2.1577); span=}",
+              "@{content=CUSTOMER ID: CID-12345; source=D(1,6.3003,2.2078,8.0063,2.2097,8.0061,2.3588,6.3001,2.357); span=}",
+              "@{content=Microsoft Corp; source=D(1,0.5737,2.6263,1.6021,2.6288,1.6016,2.8012,0.5733,2.7987); span=}",
+              "@{content=123 Other St,; source=D(1,0.5795,2.8289,1.4806,2.8396,1.4786,3.0016,0.5775,2.9903); span=}",
+              "@{content=Redmond WA, 98052; source=D(1,0.5723,3.0335,2.0285,3.0242,2.0296,3.1935,0.5733,3.1998); span=}",
+              "@{content=BILL TO:; source=D(1,0.5717,3.9478,1.1196,3.9478,1.1196,4.0874,0.5717,4.0874); span=}",
+              "@{content=Microsoft Finance; source=D(1,0.5738,4.1583,1.8054,4.155,1.8058,4.3088,0.5742,4.3121); span=}",
+              "@{content=123 Bill St,; source=D(1,0.5785,4.3554,1.2871,4.3576,1.2866,4.5149,0.578,4.5128); span=}",
+              "@{content=Redmond WA, 98052; source=D(1,0.5763,4.5562,2.0295,4.5555,2.0296,4.7185,0.5764,4.7192); span=}",
+              "@{content=SHIP TO:; source=D(1,3.3137,3.9446,3.9014,3.9429,3.9014,4.0866,3.3141,4.0883); span=}",
+              "@{content=Microsoft Delivery; source=D(1,3.3203,4.1484,4.5871,4.1557,4.5862,4.3239,3.3203,4.3166); span=}",
+              "@{content=123 Ship St,; source=D(1,3.3286,4.353,4.1193,4.353,4.1193,4.5225,3.3286,4.5225); span=}",
+              "@{content=Redmond WA, 98052; source=D(1,3.3244,4.5549,4.7771,4.5542,4.7772,4.7204,3.3245,4.7211); span=}",
+              "@{content=SERVICE ADDRESS:; source=D(1,6.1924,3.9447,7.4333,3.9423,7.4336,4.0886,6.1924,4.091); span=}",
+              "@{content=Microsoft Services; source=D(1,6.1964,4.1547,7.4541,4.1537,7.4541,4.3112,6.1965,4.3121); span=}",
+              "@{content=123 Service St,; source=D(1,6.2007,4.3545,7.1885,4.3591,7.1885,4.5174,6.1999,4.5141); span=}",
+              "@{content=Redmond WA, 98052; source=D(1,6.1965,4.5544,7.6492,4.5544,7.6492,4.7214,6.1965,4.7214); span=}",
+              "@{content=SALESPERSON; source=D(1,0.6812,5.0301,1.6238,5.0301,1.6238,5.1751,0.6812,5.1751); span=}",
+              "@{content=P.O. NUMBER; source=D(1,2.0927,5.0301,3.0256,5.0291,3.0258,5.1754,2.0928,5.1761); span=}",
+              "@{content=REQUISITIONER; source=D(1,3.4697,5.0292,4.5198,5.0278,4.52,5.1819,3.4697,5.1833); span=}",
+              "@{content=SHIPPED VIA; source=D(1,4.7854,5.0298,5.6406,5.0309,5.6404,5.1761,4.7852,5.1753); span=}",
+              "@{content=F.O.B. POINT; source=D(1,5.8438,5.0329,6.707,5.0321,6.707,5.1733,5.8438,5.1742); span=}",
+              "@{content=TERMS; source=D(1,7.1594,5.0328,7.6367,5.0328,7.6367,5.1727,7.1594,5.1727); span=}",
+              "@{content=PO-3333; source=D(1,1.8884,5.3174,2.4819,5.3174,2.4819,5.4651,1.8884,5.4651); span=}",
+              "@{content=QUANTITY; source=D(1,0.7997,5.8078,1.5097,5.8043,1.5105,5.9574,0.8005,5.9609); span=}",
+              "@{content=DESCRIPTION; source=D(1,3.3278,5.7993,4.2272,5.7944,4.2279,5.946,3.3286,5.9508); span=}",
+              "@{content=UNIT PRICE; source=D(1,5.9009,5.8042,6.6572,5.7989,6.6572,5.9406,5.9019,5.946); span=}",
+              "@{content=TOTAL; source=D(1,7.176,5.8001,7.6247,5.8015,7.6243,5.9469,7.1756,5.9456); span=}",
+              "@{content=1; source=D(1,0.5857,6.0848,0.6672,6.0848,0.6672,6.2202,0.5857,6.2202); span=}",
+              "@{content=Test for 23 fields; source=D(1,1.8793,6.0735,3.0298,6.0676,3.0306,6.2306,1.8801,6.2365); span=}",
+              "@{content=1; source=D(1,6.6448,6.0866,6.7278,6.0866,6.7278,6.2215,6.6448,6.2215); span=}",
+              "@{content=$100.00; source=D(1,7.3574,6.0725,7.9231,6.0682,7.9243,6.2308,7.3586,6.2351); span=}",
+              "@{content=SUBTOTAL; source=D(1,6.0098,6.6494,6.7402,6.6494,6.7402,6.7999,6.0098,6.7999); span=}",
+              "@{content=$100.00; source=D(1,7.3624,6.6163,7.9272,6.615,7.9276,6.7777,7.3628,6.779); span=}",
+              "@{content=SALES TAX; source=D(1,6.0181,6.9443,6.7402,6.9443,6.7402,7.0952,6.0181,7.0952); span=}",
+              "@{content=$10.00; source=D(1,7.4458,6.9066,7.9272,6.9066,7.9272,7.0684,7.4458,7.0684); span=}",
+              "@{content=TOTAL; source=D(1,6.2793,7.246,6.7402,7.2452,6.7402,7.3854,6.2795,7.3862); span=}",
+              "@{content=$110.00; source=D(1,7.3586,7.2071,7.9274,7.2077,7.9272,7.3696,7.3585,7.3691); span=}",
+              "@{content=PREVIOUS BALANCE; source=D(1,5.3665,7.5356,6.7402,7.5356,6.7402,7.686,5.3665,7.686); span=}",
+              "@{content=$500.00; source=D(1,7.3586,7.5071,7.9275,7.5079,7.9272,7.6708,7.3584,7.6701); span=}",
+              "@{content=TOTAL DUE; source=D(1,5.9517,7.8364,6.7402,7.8364,6.7402,7.9868,5.9517,7.9868); span=}",
+              "@{content=$610.00; source=D(1,7.3586,7.8035,7.9314,7.8035,7.9314,7.9653,7.3586,7.9653); span=}",
+              "@{content=THANK YOU FOR YOUR BUSINESS!; source=D(1,3.1105,8.2685,5.3748,8.2655,5.375,8.4271,3.1107,8.4301); span=}",
+              "@{content=REMIT TO:; source=D(1,0.5707,9.0986,1.2721,9.0986,1.2721,9.2383,0.5707,9.2383); span=}",
+              "@{content=Contoso Billing; source=D(1,0.5706,9.3072,1.601,9.3067,1.6011,9.4807,0.5707,9.4812); span=}",
+              "@{content=123 Remit St; source=D(1,0.5764,9.5171,1.4495,9.5112,1.4499,9.6645,0.5774,9.6704); span=}",
+              "@{content=New York, NY, 10001; source=D(1,0.5728,9.7113,2.0015,9.7075,2.002,9.875,0.5732,9.8787); span=}"
+            ]
+          }
+        ],
+        "paragraphs": [
+          {
+            "content": "CONTOSO LTD.",
+            "source": "D(1,0.5774,0.6543,2.3408,0.6543,2.3408,0.8891,0.5774,0.8891)",
+            "span": {
+              "offset": 0,
+              "length": 12
+            }
+          },
+          {
+            "role": "title",
+            "content": "INVOICE",
+            "source": "D(1,7.0426,0.5629,8.0061,0.5602,8.0067,0.7865,7.0432,0.7892)",
+            "span": {
+              "offset": 15,
+              "length": 9
+            }
+          },
+          {
+            "content": "Contoso Headquarters 123 456th St New York, NY, 10001",
+            "source": "D(1,0.5712,1.4029,2.1128,1.405,2.112,1.9774,0.5704,1.9754)",
+            "span": {
+              "offset": 26,
+              "length": 53
+            }
+          },
+          {
+            "content": "INVOICE: INV-100",
+            "source": "D(1,6.8273,1.3946,8.0061,1.3943,8.0062,1.5381,6.8274,1.5384)",
+            "span": {
+              "offset": 81,
+              "length": 16
+            }
+          },
+          {
+            "content": "DATE: 11/15/2019 DUE DATE: 12/15/2019",
+            "source": "D(1,6.4743,1.595,8.0061,1.5937,8.0064,1.9557,6.4746,1.9571)",
+            "span": {
+              "offset": 99,
+              "length": 37
+            }
+          },
+          {
+            "content": "CUSTOMER NAME: MICROSOFT CORPORATION",
+            "source": "D(1,4.9306,2.002,8.0061,2.0014,8.0061,2.1572,4.9307,2.1577)",
+            "span": {
+              "offset": 138,
+              "length": 36
+            }
+          },
+          {
+            "content": "CUSTOMER ID: CID-12345",
+            "source": "D(1,6.3003,2.2078,8.0063,2.2097,8.0061,2.3588,6.3001,2.357)",
+            "span": {
+              "offset": 176,
+              "length": 22
+            }
+          },
+          {
+            "content": "Microsoft Corp 123 Other St, Redmond WA, 98052",
+            "source": "D(1,0.5705,2.6263,2.0271,2.6201,2.0296,3.1935,0.573,3.1998)",
+            "span": {
+              "offset": 200,
+              "length": 46
+            }
+          },
+          {
+            "content": "BILL TO: Microsoft Finance 123 Bill St, Redmond WA, 98052",
+            "source": "D(1,0.5716,3.9478,2.0292,3.9471,2.0296,4.7185,0.572,4.7192)",
+            "span": {
+              "offset": 248,
+              "length": 57
+            }
+          },
+          {
+            "content": "SHIP TO: Microsoft Delivery 123 Ship St, Redmond WA, 98052",
+            "source": "D(1,3.3137,3.9432,4.7768,3.9425,4.7772,4.7204,3.314,4.7211)",
+            "span": {
+              "offset": 307,
+              "length": 58
+            }
+          },
+          {
+            "content": "SERVICE ADDRESS: Microsoft Services 123 Service St, Redmond WA, 98052",
+            "source": "D(1,6.1921,3.9447,7.648,3.9418,7.6495,4.7214,6.1936,4.7242)",
+            "span": {
+              "offset": 367,
+              "length": 69
+            }
+          },
+          {
+            "content": "SALESPERSON",
+            "source": "D(1,0.6812,5.0306,1.6238,5.0301,1.6239,5.1751,0.6813,5.1756)",
+            "span": {
+              "offset": 456,
+              "length": 11
+            }
+          },
+          {
+            "content": "P.O. NUMBER",
+            "source": "D(1,2.0928,5.026,3.0261,5.0291,3.0256,5.1786,2.0923,5.1755)",
+            "span": {
+              "offset": 477,
+              "length": 11
+            }
+          },
+          {
+            "content": "REQUISITIONER",
+            "source": "D(1,3.4696,5.0292,4.5198,5.0287,4.5199,5.1827,3.4697,5.1833)",
+            "span": {
+              "offset": 498,
+              "length": 13
+            }
+          },
+          {
+            "content": "SHIPPED VIA",
+            "source": "D(1,4.7854,5.0291,5.6407,5.0309,5.6404,5.1768,4.7851,5.1751)",
+            "span": {
+              "offset": 521,
+              "length": 11
+            }
+          },
+          {
+            "content": "F.O.B. POINT",
+            "source": "D(1,5.8438,5.0299,6.7074,5.0321,6.707,5.1753,5.8434,5.1731)",
+            "span": {
+              "offset": 542,
+              "length": 12
+            }
+          },
+          {
+            "content": "TERMS",
+            "source": "D(1,7.1593,5.0333,7.6367,5.0328,7.6369,5.1722,7.1594,5.1726)",
+            "span": {
+              "offset": 564,
+              "length": 5
+            }
+          },
+          {
+            "content": "PO-3333",
+            "source": "D(1,1.8884,5.3174,2.4819,5.3174,2.4819,5.4651,1.8884,5.4651)",
+            "span": {
+              "offset": 600,
+              "length": 7
+            }
+          },
+          {
+            "content": "QUANTITY",
+            "source": "D(1,0.7998,5.8105,1.5097,5.807,1.5105,5.9574,0.8005,5.9609)",
+            "span": {
+              "offset": 687,
+              "length": 8
+            }
+          },
+          {
+            "content": "DESCRIPTION",
+            "source": "D(1,3.3278,5.8004,4.2272,5.7956,4.228,5.946,3.3286,5.9508)",
+            "span": {
+              "offset": 705,
+              "length": 11
+            }
+          },
+          {
+            "content": "UNIT PRICE",
+            "source": "D(1,5.9016,5.8023,6.6572,5.801,6.6575,5.9446,5.9019,5.9459)",
+            "span": {
+              "offset": 726,
+              "length": 10
+            }
+          },
+          {
+            "content": "TOTAL",
+            "source": "D(1,7.176,5.8059,7.6247,5.8073,7.6243,5.9469,7.1756,5.9456)",
+            "span": {
+              "offset": 746,
+              "length": 5
+            }
+          },
+          {
+            "content": "1",
+            "source": "D(1,0.5777,6.0918,0.6672,6.0863,0.6752,6.2147,0.5857,6.2202)",
+            "span": {
+              "offset": 772,
+              "length": 1
+            }
+          },
+          {
+            "content": "Test for 23 fields",
+            "source": "D(1,1.8793,6.0735,3.0298,6.0676,3.0306,6.2306,1.8801,6.2365)",
+            "span": {
+              "offset": 783,
+              "length": 18
+            }
+          },
+          {
+            "content": "1",
+            "source": "D(1,6.6447,6.0926,6.7278,6.0925,6.7279,6.2214,6.6448,6.2215)",
+            "span": {
+              "offset": 811,
+              "length": 1
+            }
+          },
+          {
+            "content": "$100.00",
+            "source": "D(1,7.3577,6.0731,7.9231,6.0697,7.9241,6.2317,7.3586,6.2351)",
+            "span": {
+              "offset": 822,
+              "length": 7
+            }
+          },
+          {
+            "content": "SUBTOTAL",
+            "source": "D(1,6.0091,6.6494,6.7402,6.6463,6.7409,6.7968,6.0098,6.7999)",
+            "span": {
+              "offset": 920,
+              "length": 8
+            }
+          },
+          {
+            "content": "$100.00",
+            "source": "D(1,7.3627,6.617,7.9272,6.6166,7.9274,6.7786,7.3628,6.779)",
+            "span": {
+              "offset": 938,
+              "length": 7
+            }
+          },
+          {
+            "content": "SALES TAX",
+            "source": "D(1,6.0181,6.9429,6.7409,6.9461,6.7402,7.0984,6.0174,7.0952)",
+            "span": {
+              "offset": 966,
+              "length": 9
+            }
+          },
+          {
+            "content": "$10.00",
+            "source": "D(1,7.4458,6.9066,7.9284,6.91,7.9272,7.0718,7.4447,7.0684)",
+            "span": {
+              "offset": 985,
+              "length": 6
+            }
+          },
+          {
+            "content": "TOTAL",
+            "source": "D(1,6.2793,7.246,6.7402,7.2452,6.7405,7.3849,6.2795,7.3856)",
+            "span": {
+              "offset": 1012,
+              "length": 5
+            }
+          },
+          {
+            "content": "$110.00",
+            "source": "D(1,7.3586,7.2075,7.9275,7.2085,7.9272,7.3701,7.3584,7.3691)",
+            "span": {
+              "offset": 1027,
+              "length": 7
+            }
+          },
+          {
+            "content": "PREVIOUS BALANCE",
+            "source": "D(1,5.3665,7.5356,6.7402,7.5356,6.7402,7.686,5.3665,7.686)",
+            "span": {
+              "offset": 1055,
+              "length": 16
+            }
+          },
+          {
+            "content": "$500.00",
+            "source": "D(1,7.3586,7.508,7.9277,7.5097,7.9272,7.6718,7.3582,7.6701)",
+            "span": {
+              "offset": 1081,
+              "length": 7
+            }
+          },
+          {
+            "content": "TOTAL DUE",
+            "source": "D(1,5.9517,7.8364,6.7402,7.8364,6.7402,7.9868,5.9517,7.9868)",
+            "span": {
+              "offset": 1109,
+              "length": 9
+            }
+          },
+          {
+            "content": "$610.00",
+            "source": "D(1,7.3586,7.8038,7.9323,7.8071,7.9314,7.9686,7.3577,7.9653)",
+            "span": {
+              "offset": 1128,
+              "length": 7
+            }
+          },
+          {
+            "content": "THANK YOU FOR YOUR BUSINESS!",
+            "source": "D(1,3.1105,8.2685,5.3748,8.2655,5.375,8.4271,3.1107,8.4301)",
+            "span": {
+              "offset": 1158,
+              "length": 28
+            }
+          },
+          {
+            "content": "REMIT TO: Contoso Billing 123 Remit St New York, NY, 10001",
+            "source": "D(1,0.5697,9.0986,1.9999,9.0949,2.002,9.875,0.5717,9.8787)",
+            "span": {
+              "offset": 1188,
+              "length": 58
+            }
+          }
+        ],
+        "sections": [
+          {
+            "span": {
+              "offset": 0,
+              "length": 1246
+            },
+            "elements": [
+              "/sections/1",
+              "/sections/2"
+            ]
+          },
+          {
+            "span": {
+              "offset": 0,
+              "length": 12
+            },
+            "elements": [
+              "/paragraphs/0"
+            ]
+          },
+          {
+            "span": {
+              "offset": 15,
+              "length": 1231
+            },
+            "elements": [
+              "/paragraphs/1",
+              "/paragraphs/2",
+              "/paragraphs/3",
+              "/paragraphs/4",
+              "/paragraphs/5",
+              "/paragraphs/6",
+              "/paragraphs/7",
+              "/paragraphs/8",
+              "/paragraphs/9",
+              "/paragraphs/10",
+              "/tables/0",
+              "/tables/1",
+              "/tables/2",
+              "/paragraphs/36",
+              "/paragraphs/37"
+            ]
+          }
+        ],
+        "tables": [
+          {
+            "rowCount": 2,
+            "columnCount": 6,
+            "cells": [
+              "@{kind=columnHeader; rowIndex=0; columnIndex=0; rowSpan=1; columnSpan=1; content=SALESPERSON; source=D(1,0.4952,4.9673,1.8088,4.9674,1.8088,5.2414,0.4949,5.2414); span=; elements=System.Object[]}",
+              "@{kind=columnHeader; rowIndex=0; columnIndex=1; rowSpan=1; columnSpan=1; content=P.O. NUMBER; source=D(1,1.8088,4.9674,3.3103,4.9677,3.3105,5.2415,1.8088,5.2414); span=; elements=System.Object[]}",
+              "@{kind=columnHeader; rowIndex=0; columnIndex=2; rowSpan=1; columnSpan=1; content=REQUISITIONER; source=D(1,3.3103,4.9677,4.6786,4.9676,4.6787,5.2414,3.3105,5.2415); span=; elements=System.Object[]}",
+              "@{kind=columnHeader; rowIndex=0; columnIndex=3; rowSpan=1; columnSpan=1; content=SHIPPED VIA; source=D(1,4.6786,4.9676,5.7385,4.9677,5.7387,5.2413,4.6787,5.2414); span=; elements=System.Object[]}",
+              "@{kind=columnHeader; rowIndex=0; columnIndex=4; rowSpan=1; columnSpan=1; content=F.O.B. POINT; source=D(1,5.7385,4.9677,6.8117,4.9677,6.8118,5.2413,5.7387,5.2413); span=; elements=System.Object[]}",
+              "@{kind=columnHeader; rowIndex=0; columnIndex=5; rowSpan=1; columnSpan=1; content=TERMS; source=D(1,6.8117,4.9677,7.982,4.9675,7.9823,5.2414,6.8118,5.2413); span=; elements=System.Object[]}",
+              "@{kind=content; rowIndex=1; columnIndex=0; rowSpan=1; columnSpan=1; content=; source=D(1,0.4949,5.2414,1.8088,5.2414,1.8085,5.5142,0.4944,5.514); span=}",
+              "@{kind=content; rowIndex=1; columnIndex=1; rowSpan=1; columnSpan=1; content=PO-3333; source=D(1,1.8088,5.2414,3.3105,5.2415,3.3102,5.5142,1.8085,5.5142); span=; elements=System.Object[]}",
+              "@{kind=content; rowIndex=1; columnIndex=2; rowSpan=1; columnSpan=1; content=; source=D(1,3.3105,5.2415,4.6787,5.2414,4.6786,5.5143,3.3102,5.5142); span=}",
+              "@{kind=content; rowIndex=1; columnIndex=3; rowSpan=1; columnSpan=1; content=; source=D(1,4.6787,5.2414,5.7387,5.2413,5.7387,5.5144,4.6786,5.5143); span=}",
+              "@{kind=content; rowIndex=1; columnIndex=4; rowSpan=1; columnSpan=1; content=; source=D(1,5.7387,5.2413,6.8118,5.2413,6.812,5.5145,5.7387,5.5144); span=}",
+              "@{kind=content; rowIndex=1; columnIndex=5; rowSpan=1; columnSpan=1; content=; source=D(1,6.8118,5.2413,7.9823,5.2414,7.9823,5.5147,6.812,5.5145); span=}"
+            ],
+            "source": "D(1,0.4895,4.9683,7.9854,4.9495,7.9854,5.5107,0.4895,5.5161)",
+            "span": {
+              "offset": 439,
+              "length": 228
+            }
+          },
+          {
+            "rowCount": 3,
+            "columnCount": 4,
+            "cells": [
+              "@{kind=columnHeader; rowIndex=0; columnIndex=0; rowSpan=1; columnSpan=1; content=QUANTITY; source=D(1,0.4952,5.7275,1.8071,5.7277,1.807,6.0068,0.495,6.007); span=; elements=System.Object[]}",
+              "@{kind=columnHeader; rowIndex=0; columnIndex=1; rowSpan=1; columnSpan=1; content=DESCRIPTION; source=D(1,1.8071,5.7277,5.7358,5.7278,5.7359,6.0067,1.807,6.0068); span=; elements=System.Object[]}",
+              "@{kind=columnHeader; rowIndex=0; columnIndex=2; rowSpan=1; columnSpan=1; content=UNIT PRICE; source=D(1,5.7358,5.7278,6.8138,5.728,6.8142,6.0062,5.7359,6.0067); span=; elements=System.Object[]}",
+              "@{kind=columnHeader; rowIndex=0; columnIndex=3; rowSpan=1; columnSpan=1; content=TOTAL; source=D(1,6.8138,5.728,7.9853,5.7273,7.9858,6.0062,6.8142,6.0062); span=; elements=System.Object[]}",
+              "@{kind=content; rowIndex=1; columnIndex=0; rowSpan=1; columnSpan=1; content=1; source=D(1,0.495,6.007,1.807,6.0068,1.8064,6.28,0.4945,6.2802); span=; elements=System.Object[]}",
+              "@{kind=content; rowIndex=1; columnIndex=1; rowSpan=1; columnSpan=1; content=Test for 23 fields; source=D(1,1.807,6.0068,5.7359,6.0067,5.7356,6.2796,1.8064,6.28); span=; elements=System.Object[]}",
+              "@{kind=content; rowIndex=1; columnIndex=2; rowSpan=1; columnSpan=1; content=1; source=D(1,5.7359,6.0067,6.8142,6.0062,6.8139,6.2797,5.7356,6.2796); span=; elements=System.Object[]}",
+              "@{kind=content; rowIndex=1; columnIndex=3; rowSpan=1; columnSpan=1; content=$100.00; source=D(1,6.8142,6.0062,7.9858,6.0062,7.9856,6.2797,6.8139,6.2797); span=; elements=System.Object[]}",
+              "@{kind=content; rowIndex=2; columnIndex=0; rowSpan=1; columnSpan=1; content=; source=D(1,0.4945,6.2802,1.8064,6.28,1.8063,6.5538,0.4943,6.5542); span=}",
+              "@{kind=content; rowIndex=2; columnIndex=1; rowSpan=1; columnSpan=1; content=; source=D(1,1.8064,6.28,5.7356,6.2796,5.7361,6.5529,1.8063,6.5538); span=}",
+              "@{kind=content; rowIndex=2; columnIndex=2; rowSpan=1; columnSpan=1; content=; source=D(1,5.7356,6.2796,6.8139,6.2797,6.8144,6.5532,5.7361,6.5529); span=}",
+              "@{kind=content; rowIndex=2; columnIndex=3; rowSpan=1; columnSpan=1; content=; source=D(1,6.8139,6.2797,7.9856,6.2797,7.9856,6.5525,6.8144,6.5532); span=}"
+            ],
+            "source": "D(1,0.4887,5.7202,7.9854,5.7148,7.9812,6.5581,0.4895,6.5581)",
+            "span": {
+              "offset": 670,
+              "length": 230
+            }
+          },
+          {
+            "rowCount": 5,
+            "columnCount": 2,
+            "cells": [
+              "@{kind=rowHeader; rowIndex=0; columnIndex=0; rowSpan=1; columnSpan=1; content=SUBTOTAL; source=D(1,5.3348,6.5521,6.8109,6.5518,6.8107,6.8496,5.3344,6.8517); span=; elements=System.Object[]}",
+              "@{kind=content; rowIndex=0; columnIndex=1; rowSpan=1; columnSpan=1; content=$100.00; source=D(1,6.8109,6.5518,7.9994,6.5526,7.9995,6.8491,6.8107,6.8496); span=; elements=System.Object[]}",
+              "@{kind=rowHeader; rowIndex=1; columnIndex=0; rowSpan=1; columnSpan=1; content=SALES TAX; source=D(1,5.3344,6.8517,6.8107,6.8496,6.8105,7.1504,5.3341,7.1513); span=; elements=System.Object[]}",
+              "@{kind=content; rowIndex=1; columnIndex=1; rowSpan=1; columnSpan=1; content=$10.00; source=D(1,6.8107,6.8496,7.9995,6.8491,7.9997,7.1505,6.8105,7.1504); span=; elements=System.Object[]}",
+              "@{kind=rowHeader; rowIndex=2; columnIndex=0; rowSpan=1; columnSpan=1; content=TOTAL; source=D(1,5.3341,7.1513,6.8105,7.1504,6.8101,7.4498,5.3336,7.4503); span=; elements=System.Object[]}",
+              "@{kind=content; rowIndex=2; columnIndex=1; rowSpan=1; columnSpan=1; content=$110.00; source=D(1,6.8105,7.1504,7.9997,7.1505,7.9999,7.4503,6.8101,7.4498); span=; elements=System.Object[]}",
+              "@{kind=rowHeader; rowIndex=3; columnIndex=0; rowSpan=1; columnSpan=1; content=PREVIOUS BALANCE; source=D(1,5.3336,7.4503,6.8101,7.4498,6.8097,7.7494,5.3343,7.75); span=; elements=System.Object[]}",
+              "@{kind=content; rowIndex=3; columnIndex=1; rowSpan=1; columnSpan=1; content=$500.00; source=D(1,6.8101,7.4498,7.9999,7.4503,8.0002,7.7498,6.8097,7.7494); span=; elements=System.Object[]}",
+              "@{kind=rowHeader; rowIndex=4; columnIndex=0; rowSpan=1; columnSpan=1; content=TOTAL DUE; source=D(1,5.3343,7.75,6.8097,7.7494,6.8093,8.0421,5.3347,8.0423); span=; elements=System.Object[]}",
+              "@{kind=content; rowIndex=4; columnIndex=1; rowSpan=1; columnSpan=1; content=$610.00; source=D(1,6.8097,7.7494,8.0002,7.7498,8.0003,8.0424,6.8093,8.0421); span=; elements=System.Object[]}"
+            ],
+            "source": "D(1,5.325,6.5688,7.9854,6.5635,7.9937,8.0298,5.3457,8.0352)",
+            "span": {
+              "offset": 903,
+              "length": 252
+            }
+          }
+        ],
+        "analyzerId": "prebuilt-documentFields",
+        "mimeType": "application/pdf"
+      }
+    ]
+  },
+  "usage": {
+    "documentPagesStandard": 1,
+    "contextualizationTokens": 1000,
+    "tokens": {
+      "gpt-4.1-mini-input": 6472,
+      "gpt-4.1-mini-output": 1053
+    }
+  }
+}
