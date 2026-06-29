@@ -51,13 +51,14 @@ resource aiServices 'Microsoft.CognitiveServices/accounts@2024-10-01' = {
 
 // ─────────────────────────────────────────────────────────────
 // 3. MODEL DEPLOYMENTS on the AIServices resource
-//    CU prebuilt-documentFields requires gpt-4.1 or gpt-5.2 for
-//    the "prebuilt default scenario" (field extraction).
+//    CU prebuilt-documentFields requires gpt-5.2 for the
+//    "prebuilt default scenario" (field extraction).
 //    gpt-4.1-mini covers the "prebuilt search scenario".
+//    NOTE: gpt-4.1 is deprecated for new deployments as of 2026.
 // ─────────────────────────────────────────────────────────────
-resource gpt41 'Microsoft.CognitiveServices/accounts/deployments@2024-10-01' = {
+resource gpt52 'Microsoft.CognitiveServices/accounts/deployments@2024-10-01' = {
   parent: aiServices
-  name: 'gpt-4.1'
+  name: 'gpt-5.2'
   sku: {
     name: 'GlobalStandard'
     capacity: 10                     // 10K TPM — enough for a demo
@@ -65,8 +66,8 @@ resource gpt41 'Microsoft.CognitiveServices/accounts/deployments@2024-10-01' = {
   properties: {
     model: {
       format: 'OpenAI'
-      name: 'gpt-4.1'
-      version: '2025-04-14'
+      name: 'gpt-5.2'
+      version: '2025-12-11'
     }
   }
 }
@@ -85,7 +86,7 @@ resource gpt41Mini 'Microsoft.CognitiveServices/accounts/deployments@2024-10-01'
       version: '2025-04-14'
     }
   }
-  dependsOn: [gpt41]                // Serialize deployments to avoid conflicts
+  dependsOn: [gpt52]                // Serialize deployments to avoid conflicts
 }
 
 resource embedding 'Microsoft.CognitiveServices/accounts/deployments@2024-10-01' = {
@@ -104,6 +105,21 @@ resource embedding 'Microsoft.CognitiveServices/accounts/deployments@2024-10-01'
   }
   dependsOn: [gpt41Mini]
 }
+
+// ─────────────────────────────────────────────────────────────
+// 4. POST-DEPLOYMENT: Configure CU defaults
+//    Run after `az deployment group create`:
+//      TOKEN=$(az account get-access-token --resource https://cognitiveservices.azure.com --query accessToken -o tsv)
+//      curl -X PATCH "${CU_ENDPOINT}/contentunderstanding/defaults?api-version=2025-11-01" \
+//        -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" \
+//        -d '{"modelDeployments":{"prebuilt-analyzer-completion":"gpt-5.2","prebuilt-analyzer-search":"gpt-4.1-mini","prebuilt-analyzer-embedding":"text-embedding-3-large"}}'
+//
+//    NOTE: We attempted to automate this via deploymentScripts but
+//    subscription policy blocks key-based storage auth for the
+//    script container. The REST call above is the workaround.
+//    In production subs without this policy, uncomment the
+//    deploymentScripts resource below.
+// ─────────────────────────────────────────────────────────────
 
 // ─────────────────────────────────────────────────────────────
 // OUTPUTS — compare endpoints and resource types
