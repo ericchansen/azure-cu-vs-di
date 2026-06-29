@@ -50,13 +50,14 @@ resource aiServices 'Microsoft.CognitiveServices/accounts@2024-10-01' = {
 }
 
 // ─────────────────────────────────────────────────────────────
-// 3. GPT-4o-MINI DEPLOYMENT on the AIServices resource
-//    This is the LLM that CU's field extraction will consume.
-//    We'll monitor its token usage before/after running CU.
+// 3. MODEL DEPLOYMENTS on the AIServices resource
+//    CU prebuilt-documentFields requires gpt-4.1 or gpt-5.2 for
+//    the "prebuilt default scenario" (field extraction).
+//    gpt-4.1-mini covers the "prebuilt search scenario".
 // ─────────────────────────────────────────────────────────────
-resource gpt4oMini 'Microsoft.CognitiveServices/accounts/deployments@2024-10-01' = {
+resource gpt41 'Microsoft.CognitiveServices/accounts/deployments@2024-10-01' = {
   parent: aiServices
-  name: 'gpt-4o-mini'
+  name: 'gpt-4.1'
   sku: {
     name: 'GlobalStandard'
     capacity: 10                     // 10K TPM — enough for a demo
@@ -64,10 +65,27 @@ resource gpt4oMini 'Microsoft.CognitiveServices/accounts/deployments@2024-10-01'
   properties: {
     model: {
       format: 'OpenAI'
-      name: 'gpt-4o-mini'
-      version: '2024-07-18'
+      name: 'gpt-4.1'
+      version: '2025-04-14'
     }
   }
+}
+
+resource gpt41Mini 'Microsoft.CognitiveServices/accounts/deployments@2024-10-01' = {
+  parent: aiServices
+  name: 'gpt-4.1-mini'
+  sku: {
+    name: 'GlobalStandard'
+    capacity: 10
+  }
+  properties: {
+    model: {
+      format: 'OpenAI'
+      name: 'gpt-4.1-mini'
+      version: '2025-04-14'
+    }
+  }
+  dependsOn: [gpt41]                // Serialize deployments to avoid conflicts
 }
 
 resource embedding 'Microsoft.CognitiveServices/accounts/deployments@2024-10-01' = {
@@ -84,7 +102,7 @@ resource embedding 'Microsoft.CognitiveServices/accounts/deployments@2024-10-01'
       version: '1'
     }
   }
-  dependsOn: [gpt4oMini]            // Serialize deployments to avoid conflicts
+  dependsOn: [gpt41Mini]
 }
 
 // ─────────────────────────────────────────────────────────────
